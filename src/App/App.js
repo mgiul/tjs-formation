@@ -7,11 +7,11 @@ function App() {
     <div className="App">
       DEMAT BREIZH
       <hr/>
-      <Button text="Cliquez ici !"/>
-      <Button text="Cancel"/>
-      <Button text="Ok"/>
-      
-
+      <Button>Cliquez ici !</Button>
+      <Button>Cancel</Button>
+      <Button>Ok</Button>
+      <Button>Hello</Button>
+      <Button children="Hello"/>
     </div>
   );
 }
