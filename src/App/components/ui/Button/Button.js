@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import style from './Button.module.css'
 
 /**
  * simple button
@@ -8,7 +9,7 @@ import React from 'react'
 
 const Button = (props) => {
     console.log(props);
-    return <button className="Button">
+    return <button className={style.Button}>
         {props.children}
     </button>;
 }
