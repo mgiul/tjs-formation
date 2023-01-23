@@ -10,7 +10,7 @@ function App() {
       <Button>Cliquez<br /> ici !</Button>
       <Button><div>Cancel<br/>ag</div></Button>
       <Button>Ok</Button>
-      <Button>Hello</Button>
+      <Button><img src="/img/red_cross.png" alt='test'/> Hello</Button>
       <Button children="Hello"/>
     </div>
   );
