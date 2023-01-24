@@ -22,6 +22,7 @@ const Button = (props) => {
     console.log(props);
     return (
         <button
+            style={props.style}
             className={
                 // isClicked ? style.Button + ' ' + style.clicked : style.Button
                 `${style.Button}${isClicked ? ' ' + style.clicked : ''}`
@@ -43,7 +44,7 @@ Button.propTypes = {
 }
 
 Button.defaultProps = {
-    onButtonClick:()=>{alert('pas d\'action');} // Ne jamais faire alert ça bloque tout le js
+    onButtonClick: () => { alert('pas d\'action'); } // Ne jamais faire alert ça bloque tout le js
 }
 
 // function Button() {
