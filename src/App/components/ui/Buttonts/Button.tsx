@@ -3,11 +3,11 @@ import style from './Button.module.css';
 import PropTypes from 'prop-types';
 
 interface IButtonProps {
-    onButtonClick: Function
+    onButtonClick?: Function
     children: string | React.ReactElement | Array<ReactElement | string>
     style?: {}
     bgColor?: string
-    type: 'submit' | 'button' | 'reset'
+    type?: 'submit' | 'button' | 'reset'
 }
 
 
@@ -16,7 +16,7 @@ interface IButtonProps {
  * @returns react component structure
  */
 
-const Button = (props: IButtonProps) => {
+const Button: React.FC<IButtonProps> = (props) => {
     // Valeur étatique pour function
     const [isClicked, setIsClicked] = useState(false);
 
@@ -40,7 +40,9 @@ const Button = (props: IButtonProps) => {
                 setIsClicked(true);
                 console.log(isClicked);
                 console.log(arg);
-                props.onButtonClick();
+                if (undefined !== props.onButtonClick) {
+                    props.onButtonClick();
+                }
             }}>
             {props.children}
         </button>
@@ -52,16 +54,12 @@ Button.propTypes = {
     children: PropTypes.any.isRequired,
     style: PropTypes.object,
     bgColor: PropTypes.string,
-    type: PropTypes.oneOf(['submit', 'button', 'reset']).isRequired
+    type: PropTypes.oneOf(['submit', 'button', 'reset'])
 }
 
 Button.defaultProps = {
     onButtonClick: () => { alert('pas d\'action'); }, // Ne jamais faire alert ça bloque tout le js
     type: 'button'
 }
-
-// function Button() {
-//     return <button className="Button">benjamin</button>;
-// }
 
 export default Button;
