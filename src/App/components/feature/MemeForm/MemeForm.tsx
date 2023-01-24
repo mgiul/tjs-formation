@@ -19,7 +19,7 @@ const MemeForm: React.FC<IMemeFormProps> = (props) => {
         <div className={style.MemeForm}
             data-testid="MemeForm"
             style={props.style}>
-            templaName
+            MemeForm
         </div>
     );
 };

@@ -19,7 +19,7 @@ const Navbar: React.FC<INavbarProps> = (props) => {
         <div className={style.Navbar}
             data-testid="Navbar"
             style={props.style}>
-            templaName
+            Navbar
         </div>
     );
 };

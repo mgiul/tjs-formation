@@ -19,7 +19,7 @@ const MemeSvgViewer: React.FC<IMemeSvgViewerProps> = (props) => {
         <div className={style.MemeSvgViewer}
             data-testid="MemeSvgViewer"
             style={props.style}>
-            templaName
+            MemeSvgViewer
         </div>
     );
 };
