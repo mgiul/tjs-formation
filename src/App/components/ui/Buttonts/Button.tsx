@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 
 interface IButtonProps {
     onButtonClick: Function
-    bgColor?: string
-    style?: {}
     children: string | React.ReactElement | Array<ReactElement | string>
+    style?: {}
+    bgColor?: string
+    type: 'submit' | 'button' | 'reset'
 }
 
 
@@ -29,6 +30,7 @@ const Button = (props: IButtonProps) => {
     console.log(props);
     return (
         <button
+            type={props.type}
             style={{ ...props.style, backgroundColor: props.bgColor }}
             className={
                 // isClicked ? style.Button + ' ' + style.clicked : style.Button
@@ -49,11 +51,13 @@ Button.propTypes = {
     onButtonClick: PropTypes.func.isRequired,
     children: PropTypes.any.isRequired,
     style: PropTypes.object,
-    bgColor: PropTypes.string
+    bgColor: PropTypes.string,
+    type: PropTypes.oneOf(['submit', 'button', 'reset']).isRequired
 }
 
 Button.defaultProps = {
-    onButtonClick: () => { alert('pas d\'action'); } // Ne jamais faire alert ça bloque tout le js
+    onButtonClick: () => { alert('pas d\'action'); }, // Ne jamais faire alert ça bloque tout le js
+    type: 'button'
 }
 
 // function Button() {

@@ -29,6 +29,7 @@ class App extends React.PureComponent<IAppProps, IAppState> {
           // Retard de un car setstate est async
           // console.log(this.state.counter);
         }}
+          type="button"
           bgColor="steelblue">
           Click -1</Button>
         <Button bgColor="tomato" style={{ color: "red" }}>Click +1</Button>
