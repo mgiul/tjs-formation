@@ -3,15 +3,17 @@ import './App.css';
 import Button from './components/ui/Button/Button';
 
 function App() {
+  let counter = 0;
   return (
     <div className="App">
-      DEMAT BREIZH
-      <hr/>
-      <Button>Cliquez<br /> ici !</Button>
-      <Button><div>Cancel<br/>ag</div></Button>
-      <Button>Ok</Button>
-      <Button><img src="/img/red_cross.png" alt='test'/> Hello</Button>
-      <Button children="Hello"/>
+      Voici le nb de click : {counter}
+      <hr />
+      <Button onButtonClick={() => { 
+        counter--;
+        console.log(counter); 
+        }}>Click -1</Button>
+      <Button>Click +1</Button>
+
     </div>
   );
 }
