@@ -24,9 +24,9 @@ class App extends React.PureComponent {
           // Retard de un car setstate est async
           // console.log(this.state.counter);
         }}
-          style={{ backgroundColor: "steelblue" }}>
+          bgColor="steelblue">
           Click -1</Button>
-        <Button style={{ backgroundColor: "tomato", color: "red" }}>Click +1</Button>
+        <Button bgColor="tomato" style={{ color: "red" }}>Click +1</Button>
         <br />
         <Button onButtonClick={() => { this.setState({ counter: 0 }) }}>Reset counter</Button>
       </div>
