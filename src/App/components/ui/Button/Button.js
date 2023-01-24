@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import style from './Button.module.css'
+import style from './Button.module.css';
+import PropTypes from 'prop-types';
+
 
 /**
  * simple button
@@ -16,7 +18,7 @@ const Button = (props) => {
             setTimeout(() => setIsClicked(false), 750);
         }
     }, [isClicked]);
-    
+
     console.log(props);
     return (
         <button
@@ -33,6 +35,15 @@ const Button = (props) => {
             {props.children}
         </button>
     );
+}
+
+Button.propTypes = {
+    onButtonClick: PropTypes.func.isRequired,
+    children: PropTypes.any.isRequired
+}
+
+Button.defaultProps = {
+    onButtonClick:()=>{alert('pas d\'action');} // Ne jamais faire alert ça bloque tout le js
 }
 
 // function Button() {
