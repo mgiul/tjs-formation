@@ -1,15 +1,20 @@
 import React from 'react';
 import './App.css';
-import Button from './components/ui/Button/Button';
+import Button from './components/ui/Buttonts/Button';
+interface IAppState {
+  counter: number
+  // Constante
+  uneValue: "hello"
+}
+interface IAppProps { }
 
-class App extends React.PureComponent {
-
-  constructor(props) {
+class App extends React.PureComponent<IAppProps, IAppState> {
+  constructor(props: IAppProps) {
     super(props);
-    this.state = { counter: 0 };
+    this.state = { uneValue: "hello", counter: 0, };
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(oldProps: IAppProps, oldState: IAppState) {
     console.log('Après le changement effectif de l\'état', this.state.counter);
     console.log(arguments); // voir les arguments de la fonction
   }
