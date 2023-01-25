@@ -6,6 +6,7 @@ import MemeForm from "./components/feature/MemeForm/MemeForm";
 import FlexHLayout from "./components/layout/FlexHLayout/FlexHLayout";
 import Footer from "./components/ui/Footer/Footer";
 import Header from "./components/ui/Header/Header";
+import { BASE_MEME_IMG, REST_ADR } from "./config/config";
 interface IAppState { meme: MemeInterface, images: Array<ImageInterface> }
 interface IAppProps { }
 
@@ -13,16 +14,13 @@ class App extends React.PureComponent<IAppProps, IAppState> {
   constructor(props: IAppProps) {
     super(props)
     this.state = {
-      meme: DummyMeme, images: [
-        {
-          id: 1,
-          url: "look-rick.jpg",
-          w: 1256,
-          h: 670,
-          name: "rock &amp; morty"
-        }
-      ]
+      meme: DummyMeme, images: []
     };
+  }
+  componentDidMount(){
+    fetch(`${REST_ADR}/images`)
+      .then(r=>r.json(),r=>[])
+      .then(ar=>this.setState({images:ar}));
   }
   render() {
     return (
@@ -30,8 +28,10 @@ class App extends React.PureComponent<IAppProps, IAppState> {
         <Header />
         <FlexHLayout style={{ height: '89vh' }}>
           <MemeSVGViewer
-            basePath="/img/meme/"
-            image={this.state.images.find(e => e.id === this.state.meme.imageId)}
+            basePath={BASE_MEME_IMG}
+            image={this.state.images.find(e => {
+              return e.id === this.state.meme.imageId
+            })}
             meme={this.state.meme} />
           <MemeForm
             meme={this.state.meme}
