@@ -1,4 +1,4 @@
-import { MemeSVGViewer } from 'orsys-tjs-meme';
+import { MemeSVGViewer, MemeInterface } from 'orsys-tjs-meme';
 import { DummyMeme } from './interfaces/dummyMeme';
 import React from 'react';
 import './App.css';
@@ -8,19 +8,28 @@ import Header from './components/ui/Header/Header';
 import Footer from './components/ui/Footer/Footer';
 
 
-interface IAppState { }
+interface IAppState { meme: MemeInterface }
 interface IAppProps { }
 
 class App extends React.PureComponent<IAppProps, IAppState> {
+  constructor(props: IAppProps) {
+    super(props);
+    this.state = { meme: DummyMeme };
+  }
+
   render() {
     return (
       <div className="App">
-        <Header/>
-        <FlexHLayout>
-          <MemeSVGViewer image={undefined} meme={DummyMeme} />
-          <MemeForm />
+        <Header />
+        <FlexHLayout style={{ height: '89vh' }}>
+          <MemeSVGViewer image={undefined} meme={this.state.meme} />
+          <MemeForm
+            meme={this.state.meme}
+            onMemeValueChange={(newMeme: MemeInterface) => {
+              this.setState({ meme: newMeme })
+            }} />
         </FlexHLayout>
-        <Footer/>
+        <Footer />
       </div>
     );
   }
